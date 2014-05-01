@@ -1,27 +1,15 @@
-H1 Ruby & Ruby on Rails
+# Ruby & Ruby on Rails
 
 !SLIDE
 
-# A Title Slide
+# Ruby & Ruby on Rails
 
-## me@example.com
+## Лисовский Влад, Lakehouse
 
-!SLIDE
+### lisovskyvlad@gmail.com
 
-# Some sample code
+!SLIDE top-right
 
-``` ruby
-def method
-  puts "Hello, World"
-end
-```
+# Ruby
 
-!NOTES
-
- * a note
-
-!SLIDE
-
-# With a Background Image
-
-}}} images/flickr.png
+}}} images/ruby.png
