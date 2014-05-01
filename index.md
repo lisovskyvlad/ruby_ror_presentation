@@ -1,4 +1,4 @@
-# ruby_rails_kd
+H1 Ruby & Ruby on Rails
 
 !SLIDE
 
