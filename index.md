@@ -8,11 +8,6 @@
 !SLIDE center_bg_full
 }}} images/ruby.png
 
-!SLIDE center_bg_full
-}}} images/matz.jpeg
-##### Matsumoto accepting an award from
-##### the Free Software Foundation in 2012
-
 !SLIDE left
 # Краткая история Ruby
 
@@ -21,6 +16,25 @@
 * Что хотел создатель:
   * Более мощныи язык, чем Perl
   * Более ООП язык, чем Python
+  * Хотел создать новый язык, в котором парадигма функционального программирования сбаланасирована принципами императивного программирования.
+
+!SLIDE center_bg_full
+}}} images/matz.jpeg
+##### Matsumoto accepting an award from
+##### the Free Software Foundation in 2012
+
+!SLIDE left
+# Что нужно знать о Ruby
+
+* Динамическая типизация
+* Интерпретируемый язык
+* Мультипарадигменный
+* Открытое программное обеспечение (англ. open-source software)
+* Для комфортного написания кода достаточно хорошего текстового редактора
+* Основные реализации:
+  * MRI, основная, на Си (2.1.1)
+  * JRuby, работающая поверх JVM (1.7.12)
+  * Rubinius, С++, Ruby (2.2.6)
 
 !SLIDE center_bg_full bottom-left
 }}} images/ruby_way.jpeg
