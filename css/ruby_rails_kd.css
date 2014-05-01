@@ -10,3 +10,10 @@
 /*.deck-status {*/
     /*display: none;*/
 /*}*/
+
+
+.keydown.deck-container .slide.full-background.ruby_bg {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

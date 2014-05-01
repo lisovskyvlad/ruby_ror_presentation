@@ -8,8 +8,6 @@
 
 ### lisovskyvlad@gmail.com
 
-!SLIDE top-right
-
-# Ruby
+!SLIDE ruby_bg bottom-right
 
 }}} images/ruby.png
