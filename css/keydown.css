@@ -106,6 +106,8 @@ body {
       box-pack: start; }
       .keydown.deck-container .slide.full-background.ruby {
         background-image: url(../images/ruby.png); }
+      .keydown.deck-container .slide.full-background.matz {
+        background-image: url(../images/matz.jpeg); }
       .keydown.deck-container .slide.full-background h1 {
         display: inline;
         position: absolute;
