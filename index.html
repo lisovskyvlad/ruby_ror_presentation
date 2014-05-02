@@ -55,7 +55,7 @@
         <li>Что хотел создатель:
         
         <ul>
-        <li>Более мощныи язык, чем Perl</li>
+        <li>Более мощный язык, чем Perl</li>
         <li>Более ООП язык, чем Python</li>
         <li>Хотел создать новый язык, в котором парадигма функционального программирования сбаланасирована принципами императивного программирования.</li>
         </ul>
@@ -489,52 +489,29 @@
       </div>
       <div class='spacer bottom'></div>
     </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Модель запрос/ответа</h1>
+        
+        <h3>Последовательность обработки запроса:</h3>
+        
+        <ul>
+        <li>Браузер</li>
+        <li>Прокси-сервер (обычно, nginx)</li>
+        <li>Application-cервер (Unicorn, Puma, Rainbow)</li>
+        <li>Rack (прослойка между ruby кодом и фреймворком)</li>
+        <li>Middlewares (возможность дополнительной обработки запроса на уровне веб-сервера )</li>
+        <li>Роутер</li>
+        <li>Контроллер и действие</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
     <section class='bottom-left full-background rails_tree right_bg_full slide'>
       <div class='spacer top'></div>
       <div class='content'>
         <h1>Файловая структура приложения</h1>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='slide'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Пример контроллера</h1>
-        
-        <p><textarea class='code' display='none' mode='ruby'>class ProjectsController < ApplicationController&#x000A;  skip_before_filter :authenticate_user!, only: [:show]&#x000A;&#x000A;  def new&#x000A;    @project = Project.new&#x000A;  end&#x000A;&#x000A;  def create&#x000A;    @project = ::Projects::CreateService.new(current_user, params[:project]).execute&#x000A;    flash[:notice] = 'Project was successfully created.' if @project.saved?&#x000A;  end&#x000A;&#x000A;  def update&#x000A;    status = ::Projects::UpdateService.new(@project, current_user, params).execute&#x000A;&#x000A;    respond_to do |format|&#x000A;      if status&#x000A;        flash[:notice] = 'Project was successfully updated.'&#x000A;        format.html { redirect_to edit_project_path(@project), notice: 'Project was successfully updated.' }&#x000A;      else&#x000A;        format.html { render "edit", layout: "project_settings" }&#x000A;      end&#x000A;    end&#x000A;  end&#x000A;&#x000A;  def transfer&#x000A;    ::Projects::TransferService.new(project, current_user, params).execute&#x000A;  end&#x000A;end</textarea>
-    </p>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='slide'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Пример модели</h1>
-        
-        <p><textarea class='code' display='none' mode='ruby'>class Project < ActiveRecord::Base&#x000A;  belongs_to :creator,      foreign_key: "creator_id", class_name: "User"&#x000A;  belongs_to :group, -> { where(type: Group) }, foreign_key: "namespace_id"&#x000A;&#x000A;  has_one :gitlab_ci_service, dependent: :destroy&#x000A;  has_many :events,             dependent: :destroy&#x000A;  has_many :notes,              dependent: :destroy&#x000A;&#x000A;  delegate :name, to: :owner, allow_nil: true, prefix: true&#x000A;&#x000A;  # Validations&#x000A;  validates :creator, presence: true, on: :create&#x000A;  validates :description, length: { maximum: 2000 }, allow_blank: true&#x000A;  scope :public_only, -> { where(visibility_level: Project::PUBLIC) }&#x000A;&#x000A;  def repository&#x000A;    @repository ||= Repository.new(path_with_namespace)&#x000A;  end&#x000A;&#x000A;  def saved?&#x000A;    id && persisted?&#x000A;  end&#x000A;&#x000A;  def add_import_job&#x000A;    RepositoryImportWorker.perform_in(2.seconds, id)&#x000A;  end&#x000A;&#x000A;  def can_have_issues_tracker_id?&#x000A;    self.issues_enabled && !self.used_default_issues_tracker?&#x000A;  end</textarea>
-    </p>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='slide'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Пример шаблона</h1>
-        
-        <p><textarea class='code' display='none' mode='ruby'><h1>Регистрация</h1>&#x000A;<%= form_for @project do |f| %>&#x000A;  <%= f.text_field :title %>&#x000A;  <%= f.text_field :desc %>&#x000A;  <%= f.label :doc, 'Прикрепить описание проекта' %>&#x000A;  <div class="field file-uploader">&#x000A;    Обзор...<%= f.file_field :doc %>&#x000A;  </div>&#x000A;  <%= f.label :agreement, class: 'agreement' do %>&#x000A;    <%= f.check_box :agreement %>&#x000A;    <span>&#x000A;      Я соглашаюсь на обработку персональных данных и с&#x000A;      <%= link_to 'правилами акции', asset_path('rules.pdf'), :target => '_blank' %>&#x000A;    </span>&#x000A;  <% end %>&#x000A;  <%= f.submit 'Создать проект', class: 'submit' %>&#x000A;<% end %></textarea>
-    </p>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='slide'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Пример Gemfile</h1>
-        
-        <h3>в Gemfile хранятся зависимости проекта</h3>
-        
-        <p><textarea class='code' display='none' mode='ruby'>source 'https://rubygems.org'&#x000A;&#x000A;gem 'rails', '4.1.0'&#x000A;gem 'pg'&#x000A;&#x000A;gem 'sass-rails', '~> 4.0.3'&#x000A;gem 'uglifier', '>= 1.3.0'&#x000A;gem 'coffee-rails', '~> 4.0.0'&#x000A;gem 'therubyracer',  platforms: :ruby&#x000A;gem 'jquery-rails'&#x000A;gem 'rails-i18n'&#x000A;&#x000A;gem 'validates_email_format_of'&#x000A;gem 'paperclip'&#x000A;&#x000A;group :development do&#x000A;  gem 'spring'&#x000A;  gem 'quiet_assets'&#x000A;  gem 'awesome_print'&#x000A;  gem 'better_errors'&#x000A;  gem 'binding_of_caller'&#x000A;  gem 'capistrano', '~> 3.0.1'&#x000A;end</textarea>
-    </p>
       </div>
       <div class='spacer bottom'></div>
     </section>
@@ -556,15 +533,67 @@
       </div>
       <div class='spacer bottom'></div>
     </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h3>Пример контроллера (ActionPack/ActionController)</h3>
+        
+        <p><textarea class='code' display='none' mode='ruby'>class ProjectsController < ApplicationController&#x000A;  skip_before_filter :authenticate_user!, only: [:show]&#x000A;&#x000A;  def new&#x000A;    @project = Project.new&#x000A;  end&#x000A;&#x000A;  def create&#x000A;    @project = ::Projects::CreateService.new(current_user, params[:project]).execute&#x000A;    flash[:notice] = 'Project was successfully created.' if @project.saved?&#x000A;  end&#x000A;&#x000A;  def update&#x000A;    status = ::Projects::UpdateService.new(@project, current_user, params).execute&#x000A;&#x000A;    respond_to do |format|&#x000A;      if status&#x000A;        flash[:notice] = 'Project was successfully updated.'&#x000A;        format.html { redirect_to edit_project_path(@project), notice: 'Project was successfully updated.' }&#x000A;      else&#x000A;        format.html { render "edit", layout: "project_settings" }&#x000A;      end&#x000A;    end&#x000A;  end&#x000A;&#x000A;  def transfer&#x000A;    ::Projects::TransferService.new(project, current_user, params).execute&#x000A;  end&#x000A;end</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h3>Пример модели (ActiveRecord)</h3>
+        
+        <p><textarea class='code' display='none' mode='ruby'>class Project < ActiveRecord::Base&#x000A;  belongs_to :creator,      foreign_key: "creator_id", class_name: "User"&#x000A;  belongs_to :group, -> { where(type: Group) }, foreign_key: "namespace_id"&#x000A;&#x000A;  has_one :gitlab_ci_service, dependent: :destroy&#x000A;  has_many :events,             dependent: :destroy&#x000A;  has_many :notes,              dependent: :destroy&#x000A;&#x000A;  delegate :name, to: :owner, allow_nil: true, prefix: true&#x000A;&#x000A;  # Validations&#x000A;  validates :creator, presence: true, on: :create&#x000A;  validates :description, length: { maximum: 2000 }, allow_blank: true&#x000A;  scope :public_only, -> { where(visibility_level: Project::PUBLIC) }&#x000A;&#x000A;  def repository&#x000A;    @repository ||= Repository.new(path_with_namespace)&#x000A;  end&#x000A;&#x000A;  def saved?&#x000A;    id && persisted?&#x000A;  end&#x000A;&#x000A;  def add_import_job&#x000A;    RepositoryImportWorker.perform_in(2.seconds, id)&#x000A;  end&#x000A;&#x000A;  def can_have_issues_tracker_id?&#x000A;    self.issues_enabled && !self.used_default_issues_tracker?&#x000A;  end</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h3>Пример шаблона (ActionPack/ActionView)</h3>
+        
+        <p><textarea class='code' display='none' mode='ruby'><h1>Регистрация</h1>&#x000A;<%= form_for @project do |f| %>&#x000A;  <%= f.text_field :title %>&#x000A;  <%= f.text_field :desc %>&#x000A;  <%= f.label :doc, 'Прикрепить описание проекта' %>&#x000A;  <div class="field file-uploader">&#x000A;    Обзор...<%= f.file_field :doc %>&#x000A;  </div>&#x000A;  <%= f.label :agreement, class: 'agreement' do %>&#x000A;    <%= f.check_box :agreement %>&#x000A;    <span>&#x000A;      Я соглашаюсь на обработку персональных данных и с&#x000A;      <%= link_to 'правилами акции', asset_path('rules.pdf'), :target => '_blank' %>&#x000A;    </span>&#x000A;  <% end %>&#x000A;  <%= f.submit 'Создать проект', class: 'submit' %>&#x000A;<% end %></textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h4>Пример routes.rb (ActionPack/ActionDispatch)</h4>
+        
+        <p><textarea class='code' display='none' mode='ruby'>resources :tts, except: :show do&#x000A;  member do&#x000A;    patch :restore&#x000A;  end&#x000A;&#x000A;  resources :shelves, except: [:show, :destroy]&#x000A;  resources :removal_comments, except: [:index, :show, :edit, :update, :destroy]&#x000A;end&#x000A;resources :areas&#x000A;resources :users&#x000A;resources :tt_types, except: :show&#x000A;&#x000A;resources :furnitures, except: :show do&#x000A;  collection do&#x000A;    get :index_sort&#x000A;    post :sort&#x000A;  end&#x000A;end&#x000A;&#x000A;# statistics&#x000A;%w(sector_outlet cities partners inventarisation sectors trade_points sfa_codes).each do |report|&#x000A;  get "statistics/#{report}", to: "statistics##{report}", defaults: { format: :xlsx }&#x000A;end&#x000A;&#x000A;get 'profile', to: 'users#profile', as: :profile&#x000A;resource :user_sessions, path: 'sessions', only: [:new, :create, :destroy]&#x000A;delete 'logout', to: 'user_sessions#destroy'</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Пример Gemfile</h2>
+        
+        <h3>в Gemfile хранятся зависимости проекта</h3>
+        
+        <p><textarea class='code' display='none' mode='ruby'>source 'https://rubygems.org'&#x000A;&#x000A;gem 'rails', '4.1.0'&#x000A;gem 'pg'&#x000A;&#x000A;gem 'sass-rails', '~> 4.0.3'&#x000A;gem 'uglifier', '>= 1.3.0'&#x000A;gem 'coffee-rails', '~> 4.0.0'&#x000A;gem 'therubyracer',  platforms: :ruby&#x000A;gem 'jquery-rails'&#x000A;gem 'rails-i18n'&#x000A;&#x000A;gem 'validates_email_format_of'&#x000A;gem 'paperclip'&#x000A;&#x000A;group :development do&#x000A;  gem 'spring'&#x000A;  gem 'quiet_assets'&#x000A;  gem 'awesome_print'&#x000A;  gem 'better_errors'&#x000A;  gem 'binding_of_caller'&#x000A;  gem 'capistrano', '~> 3.0.1'&#x000A;end</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
     <section class='left slide'>
       <div class='spacer top'></div>
       <div class='content'>
         <h1>Хранилища данных</h1>
         
-        <h4>Из коробки работает с:</h4>
+        <h4>Из коробки Rails поддерживает:</h4>
         
         <ul>
-        <li>postgres</li>
+        <li>Postgres</li>
         <li>mysql</li>
         <li>sqlite</li>
         <li>memcached</li>
@@ -576,7 +605,7 @@
         <ul>
         <li>mongodb</li>
         <li>redis</li>
-        <li>oracle!</li>
+        <li>Oracle!</li>
         </ul>
       </div>
       <div class='spacer bottom'></div>

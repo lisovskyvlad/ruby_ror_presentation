@@ -15,7 +15,7 @@
 * Разработан японцем Юкихиро Мацумото
 * Вышел в свет в 1995 году
 * Что хотел создатель:
-  * Более мощныи язык, чем Perl
+  * Более мощный язык, чем Perl
   * Более ООП язык, чем Python
   * Хотел создать новый язык, в котором парадигма функционального программирования сбаланасирована принципами императивного программирования.
 
@@ -409,12 +409,33 @@ puts MyConstants::MeaningOfLife
 }}} images/mvc.png
 # MVC
 
+!SLIDE left
+# Модель запрос/ответа
+### Последовательность обработки запроса:
+* Браузер
+* Прокси-сервер (обычно, nginx)
+* Application-cервер (Unicorn, Puma, Rainbow)
+* Rack (прослойка между ruby кодом и фреймворком)
+* Middlewares (возможность дополнительной обработки запроса на уровне веб-сервера )
+* Роутер
+* Контроллер и действие
+
 !SLIDE right_bg_full bottom-left
 }}} images/rails_tree.png
 # Файловая структура приложения
 
+!SLIDE left
+# Rails это тоже Gem
+### На самом деле это 'мета'-гем, он зависит от других:
+* Railtie
+* ActiveSupport
+* ActiveRecord
+* ActiveModel
+* ActionMailer
+* ActionPack(ActionController, ActionDispatch, ActionView)
+
 !SLIDE
-# Пример контроллера
+### Пример контроллера (ActionPack/ActionController)
 ``` ruby
 class ProjectsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:show]
@@ -448,7 +469,7 @@ end
 ```
 
 !SLIDE
-# Пример модели
+### Пример модели (ActiveRecord)
 ``` ruby
 class Project < ActiveRecord::Base
   belongs_to :creator,      foreign_key: "creator_id", class_name: "User"
@@ -483,7 +504,7 @@ class Project < ActiveRecord::Base
 ```
 
 !SLIDE
-# Пример шаблона
+### Пример шаблона (ActionPack/ActionView)
 ``` ruby
 <h1>Регистрация</h1>
 <%= form_for @project do |f| %>
@@ -505,7 +526,39 @@ class Project < ActiveRecord::Base
 ```
 
 !SLIDE
-# Пример Gemfile
+#### Пример routes.rb (ActionPack/ActionDispatch)
+```ruby
+resources :tts, except: :show do
+  member do
+    patch :restore
+  end
+
+  resources :shelves, except: [:show, :destroy]
+  resources :removal_comments, except: [:index, :show, :edit, :update, :destroy]
+end
+resources :areas
+resources :users
+resources :tt_types, except: :show
+
+resources :furnitures, except: :show do
+  collection do
+    get :index_sort
+    post :sort
+  end
+end
+
+# statistics
+%w(sector_outlet cities partners inventarisation sectors trade_points sfa_codes).each do |report|
+  get "statistics/#{report}", to: "statistics##{report}", defaults: { format: :xlsx }
+end
+
+get 'profile', to: 'users#profile', as: :profile
+resource :user_sessions, path: 'sessions', only: [:new, :create, :destroy]
+delete 'logout', to: 'user_sessions#destroy'
+```
+
+!SLIDE
+## Пример Gemfile
 ### в Gemfile хранятся зависимости проекта
 ``` ruby
 source 'https://rubygems.org'
@@ -534,18 +587,8 @@ end
 ```
 
 !SLIDE left
-# Rails это тоже Gem
-### На самом деле это 'мета'-гем, он зависит от других:
-* Railtie
-* ActiveSupport
-* ActiveRecord
-* ActiveModel
-* ActionMailer
-* ActionPack(ActionController, ActionDispatch, ActionView)
-
-!SLIDE left
 # Хранилища данных
-#### Из коробки работает с:
+#### Из коробки Rails поддерживает:
 * Postgres
 * mysql
 * sqlite
