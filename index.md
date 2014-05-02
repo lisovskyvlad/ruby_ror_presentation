@@ -189,13 +189,18 @@ puts :test.object_id  #same
 list = [1, "two", 3]
 list << "another item"
 list[0] = "uno"
-puts list[1] # => "uno"
+puts list.last # => another item
 ```
 * Хэши
 ``` ruby
 prices = {:soda => 30, :chips => 5}
 puts prices[:soda] # => 30
 prices[:rice] = 12.50
+```
+* Диапозоны
+``` ruby
+(1..10).map { |x| 2 ** x } # => [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+puts (200..300).include?(280) # => true
 ```
 
 !SLIDE left

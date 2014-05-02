@@ -241,10 +241,13 @@
         
         <ul>
         <li>Списки
-        <textarea class='code' display='none' mode='ruby'>list = [1, "two", 3]&#x000A;list << "another item"&#x000A;list[0] = "uno"&#x000A;puts list[1] # => "uno"</textarea>
+        <textarea class='code' display='none' mode='ruby'>list = [1, "two", 3]&#x000A;list << "another item"&#x000A;list[0] = "uno"&#x000A;puts list.last # => another item</textarea>
     </li>
         <li>Хэши
         <textarea class='code' display='none' mode='ruby'>prices = {:soda => 30, :chips => 5}&#x000A;puts prices[:soda] # => 30&#x000A;prices[:rice] = 12.50</textarea>
+    </li>
+        <li>Диапозоны
+        <textarea class='code' display='none' mode='ruby'>(1..10).map { |x| 2 ** x } # => [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]&#x000A;puts (200..300).include?(280) # => true</textarea>
     </li>
         </ul>
       </div>
