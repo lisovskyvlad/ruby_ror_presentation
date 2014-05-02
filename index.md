@@ -158,6 +158,55 @@ decimal = 100.01
 puts "20 * 20 = #{20 * 20}" # => "20 * 20 = 400"
 ```
 
+!SLIDE left
+# Скалярные типы
+* Встроенная длинная арифметика
+``` ruby
+large = 1073741823
+puts large.class # => Fixnum
+large = large + 1
+puts large.class # => Bignum
+```
+* Строки:
+``` ruby
+single_quote = 'this string'
+double_quote = "double 'quote'"
+escape = "double \"quote\""
+```
+* Символы (неизменяемые строки)
+``` ruby
+:this_is_a_symbol
+puts "test".object_id
+puts "test".object_id #different
+puts :test.object_id
+puts :test.object_id  #same
+```
+
+!SLIDE left
+# Структруированные типы
+* Списки
+``` ruby
+list = [1, "two", 3]
+list << "another item"
+list[0] = "uno"
+puts list[1] # => "uno"
+```
+* Хэши
+``` ruby
+prices = {:soda => 30, :chips => 5}
+puts prices[:soda] # => 30
+prices[:rice] = 12.50
+```
+
+!SLIDE left
+# Операторы
+#### Всё работает так как вы привыкли
+* +, -, *, /, %, &&, ||, ==, etc
+* Нету ++ и --, но есть **
+``` ruby
+puts 2 ** 10 # => 1024
+```
+
 !SLIDE bottom-left
 # IDE не нужна - большинство моих знакомых рубистов используют Sublime или Vim
 }}} images/sublime.png

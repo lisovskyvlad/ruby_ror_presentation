@@ -215,6 +215,57 @@
       </div>
       <div class='spacer bottom'></div>
     </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Скалярные типы</h1>
+        
+        <ul>
+        <li>Встроенная длинная арифметика
+        <textarea class='code' display='none' mode='ruby'>large = 1073741823&#x000A;puts large.class # => Fixnum&#x000A;large = large + 1&#x000A;puts large.class # => Bignum</textarea>
+    </li>
+        <li>Строки:
+        <textarea class='code' display='none' mode='ruby'>single_quote = 'this string'&#x000A;double_quote = "double 'quote'"&#x000A;escape = "double \"quote\""</textarea>
+    </li>
+        <li>Символы (неизменяемые строки)
+        <textarea class='code' display='none' mode='ruby'>:this_is_a_symbol&#x000A;puts "test".object_id&#x000A;puts "test".object_id #different&#x000A;puts :test.object_id&#x000A;puts :test.object_id  #same</textarea>
+    </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Структруированные типы</h1>
+        
+        <ul>
+        <li>Списки
+        <textarea class='code' display='none' mode='ruby'>list = [1, "two", 3]&#x000A;list << "another item"&#x000A;list[0] = "uno"&#x000A;puts list[1] # => "uno"</textarea>
+    </li>
+        <li>Хэши
+        <textarea class='code' display='none' mode='ruby'>prices = {:soda => 30, :chips => 5}&#x000A;puts prices[:soda] # => 30&#x000A;prices[:rice] = 12.50</textarea>
+    </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Операторы</h1>
+        
+        <h4>Всё работает так как вы привыкли</h4>
+        
+        <ul>
+        <li>+, -, *, /, %, &amp;&amp;, ||, ==, etc</li>
+        <li>Нету ++ и --, но есть **
+        <textarea class='code' display='none' mode='ruby'>puts 2 ** 10 # => 1024</textarea>
+    </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
     <section class='bottom-left full-background slide sublime'>
       <div class='spacer top'></div>
       <div class='content'>
