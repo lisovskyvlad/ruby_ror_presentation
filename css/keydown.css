@@ -110,6 +110,8 @@ body {
         background-image: url(../images/matz.jpeg); }
       .keydown.deck-container .slide.full-background.ruby_metaprog_book {
         background-image: url(../images/ruby_metaprog_book.jpg); }
+      .keydown.deck-container .slide.full-background.rubygems {
+        background-image: url(../images/rubygems.png); }
       .keydown.deck-container .slide.full-background.sublime {
         background-image: url(../images/sublime.png); }
       .keydown.deck-container .slide.full-background.ruby_way {

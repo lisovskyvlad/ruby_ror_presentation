@@ -292,6 +292,10 @@ puts MyConstants::MeaningOfLife
 ```
 
 !SLIDE bottom-left
+}}} images/rubygems.png
+
+
+!SLIDE bottom-left
 # IDE не нужна - большинство моих знакомых рубистов используют Sublime или Vim
 }}} images/sublime.png
 
