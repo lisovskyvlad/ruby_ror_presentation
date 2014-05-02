@@ -473,6 +473,43 @@
       </div>
       <div class='spacer bottom'></div>
     </section>
+    <section class='bottom-left full-background rails_tree right_bg_full slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Файловая структура приложения</h1>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Пример контроллера</h1>
+        
+        <p><textarea class='code' display='none' mode='ruby'>class ProjectsController < ApplicationController&#x000A;  skip_before_filter :authenticate_user!, only: [:show]&#x000A;&#x000A;  def new&#x000A;    @project = Project.new&#x000A;  end&#x000A;&#x000A;  def create&#x000A;    @project = ::Projects::CreateService.new(current_user, params[:project]).execute&#x000A;    flash[:notice] = 'Project was successfully created.' if @project.saved?&#x000A;  end&#x000A;&#x000A;  def update&#x000A;    status = ::Projects::UpdateService.new(@project, current_user, params).execute&#x000A;&#x000A;    respond_to do |format|&#x000A;      if status&#x000A;        flash[:notice] = 'Project was successfully updated.'&#x000A;        format.html { redirect_to edit_project_path(@project), notice: 'Project was successfully updated.' }&#x000A;      else&#x000A;        format.html { render "edit", layout: "project_settings" }&#x000A;      end&#x000A;    end&#x000A;  end&#x000A;&#x000A;  def transfer&#x000A;    ::Projects::TransferService.new(project, current_user, params).execute&#x000A;  end&#x000A;end</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Пример контроллера</h1>
+        
+        <p><textarea class='code' display='none' mode='ruby'>class Project < ActiveRecord::Base&#x000A;  belongs_to :creator,      foreign_key: "creator_id", class_name: "User"&#x000A;  belongs_to :group, -> { where(type: Group) }, foreign_key: "namespace_id"&#x000A;&#x000A;  has_one :gitlab_ci_service, dependent: :destroy&#x000A;  has_many :events,             dependent: :destroy&#x000A;  has_many :notes,              dependent: :destroy&#x000A;&#x000A;  delegate :name, to: :owner, allow_nil: true, prefix: true&#x000A;&#x000A;  # Validations&#x000A;  validates :creator, presence: true, on: :create&#x000A;  validates :description, length: { maximum: 2000 }, allow_blank: true&#x000A;  scope :public_only, -> { where(visibility_level: Project::PUBLIC) }&#x000A;&#x000A;  def repository&#x000A;    @repository ||= Repository.new(path_with_namespace)&#x000A;  end&#x000A;&#x000A;  def saved?&#x000A;    id && persisted?&#x000A;  end&#x000A;&#x000A;  def add_import_job&#x000A;    RepositoryImportWorker.perform_in(2.seconds, id)&#x000A;  end&#x000A;&#x000A;  def can_have_issues_tracker_id?&#x000A;    self.issues_enabled && !self.used_default_issues_tracker?&#x000A;  end</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Пример шаблона</h1>
+        
+        <p><textarea class='code' display='none' mode='ruby'><h1>Регистрация</h1>&#x000A;<%= form_for @project do |f| %>&#x000A;  <%= f.text_field :title %>&#x000A;  <%= f.text_field :desc %>&#x000A;  <%= f.label :doc, 'Прикрепить описание проекта' %>&#x000A;  <div class="field file-uploader">&#x000A;    Обзор...<%= f.file_field :doc %>&#x000A;  </div>&#x000A;  <%= f.label :agreement, class: 'agreement' do %>&#x000A;    <%= f.check_box :agreement %>&#x000A;    <span>&#x000A;      Я соглашаюсь на обработку персональных данных и с&#x000A;      <%= link_to 'правилами акции', asset_path('rules.pdf'), :target => '_blank' %>&#x000A;    </span>&#x000A;  <% end %>&#x000A;  <%= f.submit 'Создать проект', class: 'submit' %>&#x000A;<% end %></textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
     <!-- deck.js navigation extension -->
     <a class='deck-prev-link' href='#' title='Previous'>&#8592;</a>
     <a class='deck-next-link' href='#' title='Next'>&#8594;</a>

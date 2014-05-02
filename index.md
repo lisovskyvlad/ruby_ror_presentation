@@ -399,3 +399,98 @@ puts MyConstants::MeaningOfLife
 !SLIDE center_bg_full bottom-left
 }}} images/mvc.png
 # MVC
+
+!SLIDE right_bg_full bottom-left
+}}} images/rails_tree.png
+# Файловая структура приложения
+
+!SLIDE
+# Пример контроллера
+``` ruby
+class ProjectsController < ApplicationController
+  skip_before_filter :authenticate_user!, only: [:show]
+
+  def new
+    @project = Project.new
+  end
+
+  def create
+    @project = ::Projects::CreateService.new(current_user, params[:project]).execute
+    flash[:notice] = 'Project was successfully created.' if @project.saved?
+  end
+
+  def update
+    status = ::Projects::UpdateService.new(@project, current_user, params).execute
+
+    respond_to do |format|
+      if status
+        flash[:notice] = 'Project was successfully updated.'
+        format.html { redirect_to edit_project_path(@project), notice: 'Project was successfully updated.' }
+      else
+        format.html { render "edit", layout: "project_settings" }
+      end
+    end
+  end
+
+  def transfer
+    ::Projects::TransferService.new(project, current_user, params).execute
+  end
+end
+```
+
+!SLIDE
+# Пример контроллера
+``` ruby
+class Project < ActiveRecord::Base
+  belongs_to :creator,      foreign_key: "creator_id", class_name: "User"
+  belongs_to :group, -> { where(type: Group) }, foreign_key: "namespace_id"
+
+  has_one :gitlab_ci_service, dependent: :destroy
+  has_many :events,             dependent: :destroy
+  has_many :notes,              dependent: :destroy
+
+  delegate :name, to: :owner, allow_nil: true, prefix: true
+
+  # Validations
+  validates :creator, presence: true, on: :create
+  validates :description, length: { maximum: 2000 }, allow_blank: true
+  scope :public_only, -> { where(visibility_level: Project::PUBLIC) }
+
+  def repository
+    @repository ||= Repository.new(path_with_namespace)
+  end
+
+  def saved?
+    id && persisted?
+  end
+
+  def add_import_job
+    RepositoryImportWorker.perform_in(2.seconds, id)
+  end
+
+  def can_have_issues_tracker_id?
+    self.issues_enabled && !self.used_default_issues_tracker?
+  end
+```
+
+!SLIDE
+# Пример шаблона
+``` ruby
+<h1>Регистрация</h1>
+<%= form_for @project do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_field :desc %>
+  <%= f.label :doc, 'Прикрепить описание проекта' %>
+  <div class="field file-uploader">
+    Обзор...<%= f.file_field :doc %>
+  </div>
+  <%= f.label :agreement, class: 'agreement' do %>
+    <%= f.check_box :agreement %>
+    <span>
+      Я соглашаюсь на обработку персональных данных и с
+      <%= link_to 'правилами акции', asset_path('rules.pdf'), :target => '_blank' %>
+    </span>
+  <% end %>
+  <%= f.submit 'Создать проект', class: 'submit' %>
+<% end %>
+```

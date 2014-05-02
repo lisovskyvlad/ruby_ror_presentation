@@ -17,3 +17,9 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.keydown.deck-container .slide.full-background.right_bg_full {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+}

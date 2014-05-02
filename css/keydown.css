@@ -124,6 +124,8 @@ body {
         background-image: url(../images/dhh.jpg); }
       .keydown.deck-container .slide.full-background.mvc {
         background-image: url(../images/mvc.png); }
+      .keydown.deck-container .slide.full-background.rails_tree {
+        background-image: url(../images/rails_tree.png); }
       .keydown.deck-container .slide.full-background h1 {
         display: inline;
         position: absolute;
