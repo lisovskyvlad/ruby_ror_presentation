@@ -214,9 +214,9 @@ puts 2 ** 10 # => 1024
 
 !SLIDE left
 # Управлениe потоком
+### Скобочки не нужны
 * if - else
 ``` ruby
-# скобочки не нужны
 if x < 0
   puts "x is negative"
 elsif x > 0
@@ -224,13 +224,17 @@ elsif x > 0
 else
   puts "x is zero"
 end
-
 # в одну строку
 puts "x is negative" if x < 0
+```
 
+* unless - else
+``` ruby
 unless [1,2,3].include?(10)
   puts '10 is not in 1..3'
 end
+# в одну строку
+errors.add(:base, 'Error message') unless @user.valid?
 ```
 
 !SLIDE left
