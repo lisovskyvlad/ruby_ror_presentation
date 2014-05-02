@@ -124,7 +124,6 @@
     </li>
         <li>Во многих языках числа и другие примитивные типы данных не являются объектами (например Python).</li>
         <li>Ruby под влиянием языка Smalltalk позволяет задать методы и переменные объекта всем типам данных.</li>
-        <li>Это упрощает использование Ruby, так как правила применимые к объектам – применимы ко всему Ruby.</li>
         </ul>
       </div>
       <div class='spacer bottom'></div>
@@ -147,7 +146,24 @@
         </ul>
         
         
-        <p><textarea class='code' display='none' mode='ruby'>hello = Proc.new do |string|&#x000A;  puts "Hello #{string}"&#x000A;end&#x000A;hello.call "Alice" # => "Hello Alice"&#x000A;hello.call "Bob"   # => "Hello Bob"</textarea>
+        <p><textarea class='code' display='none' mode='ruby'>hello = Proc.new do |string|&#x000A;  puts "Hello #{string}"&#x000A;end&#x000A;hello.call "Alice" # => "Hello Alice"</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Рефлективность</h1>
+        
+        <ul>
+        <li>Ruby очень гибкий язык, так как он позволяет его пользователям свободно менять его части</li>
+        <li>Основные части Ruby могут быть удалены или переопределены</li>
+        <li>Например, если для сложения чисел вы хотите использовать слово plus:</li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='ruby'>class Numeric&#x000A;  def plus(x)&#x000A;    self.+(x)&#x000A;  end&#x000A;end&#x000A;&#x000A;puts 5.plus 6 # => 11</textarea>
     </p>
       </div>
       <div class='spacer bottom'></div>
