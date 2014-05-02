@@ -133,6 +133,31 @@ user = User.find_by_email('vl@lakehouse.ru')
 user.admin? # => true
 ```
 
+!SLIDE left
+# Основы Ruby
+* Комментарии
+``` ruby
+# однострочный комментарий
+```
+* Переменные:
+``` ruby
+snake_case = 1
+```
+* Константы
+``` ruby
+CamelCase = 200
+USER_ACTIONS = ['clean', 'add']
+```
+* Числа:
+``` ruby
+with_delimeter = 1_000_000
+decimal = 100.01
+```
+* Интерполяция
+``` ruby
+puts "20 * 20 = #{20 * 20}" # => "20 * 20 = 400"
+```
+
 !SLIDE bottom-left
 # IDE не нужна - большинство моих знакомых рубистов используют Sublime или Vim
 }}} images/sublime.png
