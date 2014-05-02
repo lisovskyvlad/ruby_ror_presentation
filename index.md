@@ -534,6 +534,27 @@ end
 * ActionMailer
 * ActionPack(ActionController, ActionDispatch, ActionView)
 
+!SLIDE left
+## Проекты, использующие Ruby
+* Twitter (до 2009 года)
+* GitHub (почти все сервисы гитхаба на ruby/rails/sinatra)
+* Slideshare
+* ask.fm
+* Shopify
+* Groupon (американский сервис в 2013 году мигрировал на node.js и soap)
+* Airbnb
+
+!SLIDE left
+## Проекты, использующие Ruby
+* SoundCloud (часть сервисов в последствии переписана на Go)
+* Heroku
+* AviaSales
+* Head Hunter
+* КупиКупон
+* Wheely
+* kupibilet
+* Apple для некоторых своих сервисов
+
 !SLIDE
 # Вопросы? Троллинг?
 ### TO BE CONTINUED...
