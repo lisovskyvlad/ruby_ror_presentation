@@ -12,7 +12,6 @@
 
 !SLIDE left
 # Краткая история Ruby
-
 * Разработан японцем Юкихиро Мацумото
 * Вышел в свет в 1995 году
 * Что хотел создатель:
@@ -369,3 +368,13 @@ puts MyConstants::MeaningOfLife
 
 !SLIDE center_bg_full bottom-left
 }}} images/ruby_on_rails.jpg
+
+!SLIDE left
+# Краткая история Ruby On Rails
+* Разработан датчанином Дэвидом Хейнемейером Ханссоном
+* Изначально код был извлечён из [Basecamp](https://basecamp.com/) - система управления проектами
+* Компания 37signals, в которой работает Дэвид, недавно переименовалась в Basecamp
+* Известен как [@dhh](https://twitter.com/dhh)
+
+!SLIDE center_bg_full bottom-left
+}}} images/dhh.jpg
