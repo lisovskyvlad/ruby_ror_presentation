@@ -533,3 +533,8 @@ end
 * ActiveModel
 * ActionMailer
 * ActionPack(ActionController, ActionDispatch, ActionView)
+
+!SLIDE
+# Вопросы? Троллинг?
+### TO BE CONTINUED...
+### Пишите мне в твиттер [@lisovskyvlad](https://twitter.com/lisovskyvlad)
