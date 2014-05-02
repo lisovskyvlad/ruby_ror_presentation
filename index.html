@@ -510,6 +510,36 @@
       </div>
       <div class='spacer bottom'></div>
     </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Пример Gemfile</h1>
+        
+        <h3>в Gemfile хранятся зависимости проекта</h3>
+        
+        <p><textarea class='code' display='none' mode='ruby'>source 'https://rubygems.org'&#x000A;&#x000A;gem 'rails', '4.1.0'&#x000A;gem 'pg'&#x000A;&#x000A;gem 'sass-rails', '~> 4.0.3'&#x000A;gem 'uglifier', '>= 1.3.0'&#x000A;gem 'coffee-rails', '~> 4.0.0'&#x000A;gem 'therubyracer',  platforms: :ruby&#x000A;gem 'jquery-rails'&#x000A;gem 'rails-i18n'&#x000A;&#x000A;gem 'validates_email_format_of'&#x000A;gem 'paperclip'&#x000A;&#x000A;group :development do&#x000A;  gem 'spring'&#x000A;  gem 'quiet_assets'&#x000A;  gem 'awesome_print'&#x000A;  gem 'better_errors'&#x000A;  gem 'binding_of_caller'&#x000A;  gem 'capistrano', '~> 3.0.1'&#x000A;end</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Rails это тоже Gem</h1>
+        
+        <h3>На самом деле это мета-гем, он состоит из:</h3>
+        
+        <ul>
+        <li>Railtie</li>
+        <li>ActiveSupport</li>
+        <li>ActiveRecord</li>
+        <li>ActiveModel</li>
+        <li>ActionMailer</li>
+        <li>ActionPack(ActionController, ActionDispatch, ActionView)</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
     <!-- deck.js navigation extension -->
     <a class='deck-prev-link' href='#' title='Previous'>&#8592;</a>
     <a class='deck-next-link' href='#' title='Next'>&#8594;</a>

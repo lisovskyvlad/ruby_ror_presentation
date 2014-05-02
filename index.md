@@ -494,3 +494,42 @@ class Project < ActiveRecord::Base
   <%= f.submit 'Создать проект', class: 'submit' %>
 <% end %>
 ```
+
+!SLIDE
+# Пример Gemfile
+### в Gemfile хранятся зависимости проекта
+``` ruby
+source 'https://rubygems.org'
+
+gem 'rails', '4.1.0'
+gem 'pg'
+
+gem 'sass-rails', '~> 4.0.3'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'therubyracer',  platforms: :ruby
+gem 'jquery-rails'
+gem 'rails-i18n'
+
+gem 'validates_email_format_of'
+gem 'paperclip'
+
+group :development do
+  gem 'spring'
+  gem 'quiet_assets'
+  gem 'awesome_print'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'capistrano', '~> 3.0.1'
+end
+```
+
+!SLIDE left
+# Rails это тоже Gem
+### На самом деле это мета-гем, он состоит из:
+* Railtie
+* ActiveSupport
+* ActiveRecord
+* ActiveModel
+* ActionMailer
+* ActionPack(ActionController, ActionDispatch, ActionView)
