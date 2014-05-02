@@ -168,6 +168,28 @@
       </div>
       <div class='spacer bottom'></div>
     </section>
+    <section class='center_bg_full full-background ruby_metaprog_book slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Метапрограммирование</h1>
+        
+        <ul>
+        <li>Ruby имеет богатые возможности для создания DSL</li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='ruby'>class User < ActiveRecord::Base&#x000A;  %w(director marketing carrier admin vrp).each do |role|&#x000A;    define_method "#{role}?" do&#x000A;      self.role_name == role&#x000A;    end&#x000A;  end&#x000A;&#x000A;end&#x000A;&#x000A;user = User.find_by_email('vl@lakehouse.ru')&#x000A;user.admin? # => true</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
     <section class='bottom-left full-background slide sublime'>
       <div class='spacer top'></div>
       <div class='content'>

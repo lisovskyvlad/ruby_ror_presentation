@@ -112,6 +112,27 @@ end
 puts 5.plus 6 # => 11
 ```
 
+!SLIDE center_bg_full
+}}} images/ruby_metaprog_book.jpg
+
+!SLIDE
+# Метапрограммирование
+* Ruby имеет богатые возможности для создания DSL
+
+``` ruby
+class User < ActiveRecord::Base
+  %w(director marketing carrier admin vrp).each do |role|
+    define_method "#{role}?" do
+      self.role_name == role
+    end
+  end
+
+end
+
+user = User.find_by_email('vl@lakehouse.ru')
+user.admin? # => true
+```
+
 !SLIDE bottom-left
 # IDE не нужна - большинство моих знакомых рубистов используют Sublime или Vim
 }}} images/sublime.png
