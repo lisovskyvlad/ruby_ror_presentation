@@ -246,7 +246,7 @@
         <li>Хэши
         <textarea class='code' display='none' mode='ruby'>prices = {:soda => 30, :chips => 5}&#x000A;puts prices[:soda] # => 30&#x000A;prices[:rice] = 12.50</textarea>
     </li>
-        <li>Диапозоны
+        <li>Диапазоны
         <textarea class='code' display='none' mode='ruby'>(1..10).map { |x| 2 ** x } # => [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]&#x000A;puts (200..300).include?(280) # => true</textarea>
     </li>
         </ul>
@@ -337,7 +337,7 @@
         <h1>Ещё о модулях</h1>
         
         <ul>
-        <li>Объявление модули или класса это константа</li>
+        <li>Объявление модуля или класса - константа</li>
         <li><p>Модули как пространство имён
         <textarea class='code' display='none' mode='ruby'>module X&#x000A;  class D&#x000A;  end&#x000A;end&#x000A;&#x000A;module Y&#x000A;  class D&#x000A;  end&#x000A;end&#x000A;X::D.new # Отличается от класса Y::D</textarea>
     </p></li>
@@ -445,7 +445,7 @@
         <li>Фреймворк, написанный на языке программирования Ruby.</li>
         <li>Реализует архитектурный паттерн MVC (Model-View-Controller) для веб-приложений</li>
         <li>Использует REST-стиль построения веб-приложений.</li>
-        <li>Является открытым программным обеспечением и распространяется под лицензией MIT.</li>
+        <li>Является открытым программным обеспечением и распространяется под лицензией MIT</li>
         <li>Не является языком программирования</li>
         </ul>
       </div>
@@ -493,7 +493,7 @@
     <section class='slide'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Пример контроллера</h1>
+        <h1>Пример модели</h1>
         
         <p><textarea class='code' display='none' mode='ruby'>class Project < ActiveRecord::Base&#x000A;  belongs_to :creator,      foreign_key: "creator_id", class_name: "User"&#x000A;  belongs_to :group, -> { where(type: Group) }, foreign_key: "namespace_id"&#x000A;&#x000A;  has_one :gitlab_ci_service, dependent: :destroy&#x000A;  has_many :events,             dependent: :destroy&#x000A;  has_many :notes,              dependent: :destroy&#x000A;&#x000A;  delegate :name, to: :owner, allow_nil: true, prefix: true&#x000A;&#x000A;  # Validations&#x000A;  validates :creator, presence: true, on: :create&#x000A;  validates :description, length: { maximum: 2000 }, allow_blank: true&#x000A;  scope :public_only, -> { where(visibility_level: Project::PUBLIC) }&#x000A;&#x000A;  def repository&#x000A;    @repository ||= Repository.new(path_with_namespace)&#x000A;  end&#x000A;&#x000A;  def saved?&#x000A;    id && persisted?&#x000A;  end&#x000A;&#x000A;  def add_import_job&#x000A;    RepositoryImportWorker.perform_in(2.seconds, id)&#x000A;  end&#x000A;&#x000A;  def can_have_issues_tracker_id?&#x000A;    self.issues_enabled && !self.used_default_issues_tracker?&#x000A;  end</textarea>
     </p>
@@ -527,7 +527,7 @@
       <div class='content'>
         <h1>Rails это тоже Gem</h1>
         
-        <h3>На самом деле это мета-гем, он состоит из:</h3>
+        <h3>На самом деле это 'мета'-гем, он зависит от других:</h3>
         
         <ul>
         <li>Railtie</li>
