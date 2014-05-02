@@ -362,3 +362,10 @@ puts MyConstants::MeaningOfLife
 * Динамичность
 * Простые строгие правила, выполнение которых не доходит до педантизма
 * Потребность создавать полезные и красивые программы, как причина программирования
+
+!SLIDE center_bg_full bottom-left
+}}} images/ror.svg
+# Ruby on
+
+!SLIDE center_bg_full bottom-left
+}}} images/ruby_on_rails.jpg

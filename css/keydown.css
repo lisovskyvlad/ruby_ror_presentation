@@ -116,6 +116,10 @@ body {
         background-image: url(../images/sublime.png); }
       .keydown.deck-container .slide.full-background.ruby_way {
         background-image: url(../images/ruby_way.jpeg); }
+      .keydown.deck-container .slide.full-background.ror {
+        background-image: url(../images/ror.svg); }
+      .keydown.deck-container .slide.full-background.ruby_on_rails {
+        background-image: url(../images/ruby_on_rails.jpg); }
       .keydown.deck-container .slide.full-background h1 {
         display: inline;
         position: absolute;
