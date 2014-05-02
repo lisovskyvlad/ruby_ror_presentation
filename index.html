@@ -82,9 +82,9 @@
         <li>Открытое программное обеспечение (англ. open-source software)</li>
         <li>Строгая динамическая(утиная) типизация</li>
         <li>Интерпретируемый язык программирования</li>
-        <li>Для комфортного написания кода достаточно хорошего текстового редактора</li>
         <li>Очень объектно ориентированный, всё объект и всё выражение, то есть вычисляется</li>
         <li>Мультипарадигмальный (объектно-ориентированный, рефлективный, императивный, функциональный)</li>
+        <li>Для комфортного написания кода достаточно хорошего текстового редактора</li>
         <li>Основные реализации: MRI (2.1.1), JRuby (1.7.12), Rubinius (2.2.6)</li>
         </ul>
       </div>
@@ -126,6 +126,29 @@
         <li>Ruby под влиянием языка Smalltalk позволяет задать методы и переменные объекта всем типам данных.</li>
         <li>Это упрощает использование Ruby, так как правила применимые к объектам – применимы ко всему Ruby.</li>
         </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Ruby – функционален</h1>
+        
+        <ul>
+        <li>Итераторы</li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='ruby'>employees = ["Alex", "Bob", "Eve"]&#x000A;employees.each do |employee|&#x000A;  puts "Hello #{employee}"&#x000A;end&#x000A;&#x000A;puts employees.map { |e| e.reverse } # => ["xelA", "boB", "evE"]</textarea>
+    </p>
+        
+        <ul>
+        <li>Лямбды</li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='ruby'>hello = Proc.new do |string|&#x000A;  puts "Hello #{string}"&#x000A;end&#x000A;hello.call "Alice" # => "Hello Alice"&#x000A;hello.call "Bob"   # => "Hello Bob"</textarea>
+    </p>
       </div>
       <div class='spacer bottom'></div>
     </section>
