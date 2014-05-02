@@ -226,7 +226,7 @@ body {
         -ms-box-pack: center;
         box-pack: center; }
       .keydown.deck-container .slide .content .CodeMirror {
-        font-size: 2rem; }
+        font-size: 1rem; }
     .keydown.deck-container .slide .attribution {
       -webkit-background-size: contain;
       -moz-background-size: contain;

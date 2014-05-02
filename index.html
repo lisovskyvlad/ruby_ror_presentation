@@ -33,8 +33,7 @@
         
         <h3>lisovskyvlad@gmail.com</h3>
         
-        <p><textarea class='code' display='none' mode='ruby'>puts "Hello, World"</textarea>
-    </p>
+        <h4>puts "Hello, World"</h4>
       </div>
       <div class='spacer bottom'></div>
     </section>
@@ -84,20 +83,47 @@
         <li>Строгая динамическая(утиная) типизация</li>
         <li>Интерпретируемый язык программирования</li>
         <li>Для комфортного написания кода достаточно хорошего текстового редактора</li>
-        <li>Очень объектно ориентированный, всё объект и всё вычисляется (почти всё)</li>
+        <li>Очень объектно ориентированный, всё объект и всё выражение, то есть вычисляется</li>
         <li>Мультипарадигмальный (объектно-ориентированный, рефлективный, императивный, функциональный)</li>
         <li>Основные реализации: MRI (2.1.1), JRuby (1.7.12), Rubinius (2.2.6)</li>
         </ul>
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='left slide'>
+    <section class='slide'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Динамическая типизация</h1>
+        <h1>Строгая динамическая типизация</h1>
         
-        <p><textarea class='code' display='none' mode='ruby'>x = "Hello world"&#x000A;puts x   # => "Hello World"&#x000A;x = 10&#x000A;puts x   # => 10</textarea>
+        <p><textarea class='code' display='none' mode='ruby'>x = "Hello world!"&#x000A;puts x        # => "Hello World!"&#x000A;puts x.class  # => String&#x000A;puts x.upcase # => "HELLO WORLD!"&#x000A;&#x000A;x = 10&#x000A;puts x        # => 10&#x000A;puts x.class  # => Fixnum&#x000A;puts x.upcase # => NoMethodError: undefined method `upcase' for 10:Fixnum</textarea>
     </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Интерпретируемый язык программирования</h1>
+        
+        <p><textarea class='code' display='none' mode='ruby'>irb(main):001:0> x = "Hello World"&#x000A;=> "Hello World"&#x000A;irb(main):002:0> puts x&#x000A;Hello World&#x000A;=> nil</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Всё в Ruby – объекты.</h1>
+        
+        <ul>
+        <li>Для каждой частицы информации или кода могут быть определены собственные свойства и действия.</li>
+        <li>Чистейший объектно-ориентированный подход Ruby может быть продемонстрирован парой строк кода
+        <textarea class='code' display='none' mode='ruby'>5.times { print "Мы любим Ruby! Ruby – это замечательно!" }</textarea>
+    </li>
+        <li>Во многих языках числа и другие примитивные типы данных не являются объектами (например Python).</li>
+        <li>Ruby под влиянием языка Smalltalk позволяет задать методы и переменные объекта всем типам данных.</li>
+        <li>Это упрощает использование Ruby, так как правила применимые к объектам – применимы ко всему Ruby.</li>
+        </ul>
       </div>
       <div class='spacer bottom'></div>
     </section>
