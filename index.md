@@ -52,7 +52,8 @@ puts x.upcase # => NoMethodError: undefined method `upcase' for 10:Fixnum
 ```
 
 !SLIDE
-# Интерпретируемый язык программирования
+# Интерпретируемый язык
+#### В поставку языка входит irb (Interactive Ruby Shell)
 
 ``` ruby
 irb(main):001:0> x = "Hello World"
@@ -75,6 +76,9 @@ Hello World
 * Ruby под влиянием языка Smalltalk позволяет задать методы и переменные объекта всем типам данных.
 * Это упрощает использование Ruby, так как правила применимые к объектам – применимы ко всему Ruby.
 
+!SLIDE bottom-left
+# IDE не нужна - большинство моих знакомых рубистов используют Sublime или Vim
+}}} images/sublime.png
 
 !SLIDE left
 # Почему Ruby – это круто?
