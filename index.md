@@ -5,6 +5,10 @@
 ## Лисовский Влад, Lakehouse
 ### lisovskyvlad@gmail.com
 
+``` ruby
+puts "Hello, World"
+```
+
 !SLIDE center_bg_full
 }}} images/ruby.png
 
@@ -33,6 +37,16 @@
 * Очень объектно ориентированный, всё объект и всё вычисляется (почти всё)
 * Мультипарадигмальный (объектно-ориентированный, рефлективный, императивный, функциональный)
 * Основные реализации: MRI (2.1.1), JRuby (1.7.12), Rubinius (2.2.6)
+
+!SLIDE left
+# Динамическая типизация
+
+``` ruby
+x = "Hello world"
+puts x   # => "Hello World"
+x = 10
+puts x   # => 10
+```
 
 !SLIDE left
 # Почему Ruby – это круто?
