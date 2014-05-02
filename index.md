@@ -245,6 +245,52 @@ class Person
 end
 ```
 
+!SLIDE left
+# Модули
+### Отличие от классов:
+* Нельзя наследовать
+* Нельзя создать экземпляр
+* Можно "подмешать" в классы
+
+``` ruby
+# Modules as Mixin
+module Swimmer
+  def swim
+    puts "I'm swimming!"
+  end
+end
+class Person
+  include Swimmer
+end
+Person.new.swim # => "I'm swimming!"
+```
+
+
+!SLIDE left
+# Ещё о модулях
+* Объявление модули или класса это константа
+* Модули как пространство имён
+``` ruby
+module X
+  class D
+  end
+end
+
+module Y
+  class D
+  end
+end
+X::D.new # Отличается от класса Y::D
+```
+
+* В модулях и классах можно объявлять констаны
+``` ruby
+module MyConstants
+  MeaningOfLife = 42
+end
+puts MyConstants::MeaningOfLife
+```
+
 !SLIDE bottom-left
 # IDE не нужна - большинство моих знакомых рубистов используют Sublime или Vim
 }}} images/sublime.png
