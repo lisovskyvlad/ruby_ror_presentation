@@ -213,6 +213,45 @@ puts 2 ** 10 # => 1024
 ```
 
 !SLIDE left
+# Управлениe потоком
+* if - else
+``` ruby
+# скобочки не нужны
+if x < 0
+  puts "x is negative"
+elsif x > 0
+  puts "x is positive"
+else
+  puts "x is zero"
+end
+
+# в одну строку
+puts "x is negative" if x < 0
+
+unless [1,2,3].include?(10)
+  puts '10 is not in 1..3'
+end
+```
+
+!SLIDE left
+# Блоки и итераторы
+``` ruby
+list = [1, 2, 3]
+list.each { |x| puts x }
+list.each do |x|
+  puts x
+end
+
+prices = { :ball => 300, :linux => 4_000_000_000 }
+prices.each_pair do |key, value|
+  puts "#{key}: #{value}"
+end
+
+100.times { |x| puts "Hello #{x}" }
+100.downto(50) { |y| puts y }
+```
+
+!SLIDE left
 # ООП
 ``` ruby
 class Person
