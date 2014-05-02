@@ -544,6 +544,19 @@ end
 * ActionPack(ActionController, ActionDispatch, ActionView)
 
 !SLIDE left
+# Хранилища данных
+#### Из коробки работает с:
+* Postgres
+* mysql
+* sqlite
+* memcached
+
+#### Подключив библитеки:
+* mongodb
+* redis
+* Oracle!
+
+!SLIDE left
 ## Проекты, использующие Ruby
 * Twitter (до 2009 года)
 * GitHub (почти все сервисы гитхаба на ruby/rails/sinatra)
