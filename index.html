@@ -269,6 +269,21 @@
       </div>
       <div class='spacer bottom'></div>
     </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>ООП</h1>
+        
+        <p><textarea class='code' display='none' mode='ruby'>class Person&#x000A;  attr_accessor :name&#x000A;&#x000A;  # переменная экземпляра начинается с @&#x000A;  def initialize(name)&#x000A;    @name = name&#x000A;  end&#x000A;&#x000A;  def greet(great_word = 'Hello')&#x000A;    puts "#{great_word}, #{@name}"&#x000A;  end&#x000A;end&#x000A;&#x000A;person = Person.new('Anatole')&#x000A;puts person.greet('Hi')</textarea>
+    </p>
+        
+        <h5>'attr_accessor :name' заменяет:</h5>
+        
+        <p><textarea class='code' display='none' mode='ruby'>class Person&#x000A;  def name&#x000A;    @name&#x000A;  end&#x000A;&#x000A;  def name=(name)&#x000A;    @name = name&#x000A;  end&#x000A;end</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
     <section class='bottom-left full-background slide sublime'>
       <div class='spacer top'></div>
       <div class='content'>

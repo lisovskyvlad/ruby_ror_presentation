@@ -212,6 +212,39 @@ puts (200..300).include?(280) # => true
 puts 2 ** 10 # => 1024
 ```
 
+!SLIDE left
+# ООП
+``` ruby
+class Person
+  attr_accessor :name
+
+  # переменная экземпляра начинается с @
+  def initialize(name)
+    @name = name
+  end
+
+  def greet(great_word = 'Hello')
+    puts "#{great_word}, #{@name}"
+  end
+end
+
+person = Person.new('Anatole')
+puts person.greet('Hi')
+```
+
+##### 'attr_accessor :name' заменяет:
+``` ruby
+class Person
+  def name
+    @name
+  end
+
+  def name=(name)
+    @name = name
+  end
+end
+```
+
 !SLIDE bottom-left
 # IDE не нужна - большинство моих знакомых рубистов используют Sublime или Vim
 }}} images/sublime.png
