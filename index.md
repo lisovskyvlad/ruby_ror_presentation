@@ -640,3 +640,4 @@ end
 # Вопросы?
 ### Пишите мне в твиттер [@lisovskyvlad](https://twitter.com/lisovskyvlad)
 ### TO BE CONTINUED...
+##### Презентация сделана при помощи [github.com/infews/keydown](https://github.com/infews/keydown)
