@@ -620,7 +620,23 @@ end
 * kupibilet
 * Apple для некоторых своих сервисов
 
+!SLIDE left
+# Ссылки по Ruby
+* [ruby-lang.org/ru](https://www.ruby-lang.org/ru/)
+* [ruby-doc.org](http://ruby-doc.org/)
+* [rubyflow.ru/items/1130](http://rubyflow.ru/items/1130)
+* [www.sitepoint.com/ruby](http://www.sitepoint.com/ruby/)
+
+
+!SLIDE left
+# Ссылки по Rails
+* [rubyonrails.org](http://rubyonrails.org)
+* [api.rubyonrails.org](http://api.rubyonrails.org)
+* [guides.rubyonrails.org](http://guides.rubyonrails.org/)
+* [статья про rack на хабре](http://habrahabr.ru/post/131429)
+* [работа для рубистов в России](http://rubyjobs.ru)
+
 !SLIDE
-# Вопросы? Троллинг?
-### TO BE CONTINUED...
+# Вопросы?
 ### Пишите мне в твиттер [@lisovskyvlad](https://twitter.com/lisovskyvlad)
+### TO BE CONTINUED...
